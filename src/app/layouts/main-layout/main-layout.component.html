@@ -1,0 +1,25 @@
+<div class="min-h-screen flex bg-gray-100">
+
+  <!-- Sidebar Desktop/Tablet -->
+  <aside class="hidden md:block w-64 bg-gray-50 border-r">
+    <app-sidebar></app-sidebar>
+  </aside>
+
+  <!-- Content -->
+  <main class="flex-1 p-4">
+    
+    <!-- Mobile Navbar -->
+    <div class="md:hidden flex items-center justify-between bg-white p-3 rounded shadow mb-4">
+      <h2 class="font-bold text-gray-700">Legajos</h2>
+
+      <!-- Botón menú (por ahora solo visual) -->
+      <button class="px-3 py-1 bg-orange-400 text-white rounded hover:bg-orange-600">
+        ☰
+      </button>
+    </div>
+
+    <router-outlet></router-outlet>
+
+  </main>
+
+</div>

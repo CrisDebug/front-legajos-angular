@@ -1,0 +1,22 @@
+<!-- [<h2>Detalle del Legajo</h2>
+<p>ID recibido: {{ legajoId }}</p>] -->
+
+<h2>Detalle del Legajo</h2>
+
+<div *ngIf="legajo$ | async as legajo; else cargando">
+  <div *ngIf="legajo; else noExiste">
+    <p><strong>ID:</strong> {{ legajo.id }}</p>
+    <p><strong>Descripción:</strong> {{ legajo.descripcion_legajo }}</p>
+    <p><strong>Casillero ID:</strong> {{ legajo.casillero_id }}</p>
+    <p><strong>Fecha inicio:</strong> {{ legajo.fecha_inicio_legajo || 'No asignada' }}</p>
+    <p><strong>Fecha fin:</strong> {{ legajo.fecha_termino_legajo || 'No asignada' }}</p>
+  </div>
+</div>
+
+<ng-template #noExiste>
+  <p>Legajo no encontrado.</p>
+</ng-template>
+
+<ng-template #cargando>
+  <p>Cargando datos del legajo...</p>
+</ng-template>

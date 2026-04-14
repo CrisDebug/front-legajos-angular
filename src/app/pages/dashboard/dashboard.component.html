@@ -1,0 +1,116 @@
+<div class="min-h-screen bg-gray-100 flex flex-col">
+
+  <!-- HEADER -->
+  <header class="bg-white shadow-sm px-4 py-3 flex items-center justify-between">
+    <div>
+      <h1 class="text-lg font-bold text-gray-800">Legajos</h1>
+      <p class="text-xs text-gray-500">
+        {{ selectedCasilleroNombre ? 'Casillero: ' + selectedCasilleroNombre : 'Selecciona un casillero' }}
+      </p>
+    </div>
+
+    <button
+      class="text-sm bg-red-500 text-white px-3 py-1 rounded-lg hover:bg-red-600"
+      (click)="logout()"
+    >
+      Logout
+    </button>
+  </header>
+
+  <!-- MAIN CONTENT -->
+  <main class="flex-1 p-4 space-y-4">
+
+    <!-- USER BAR -->
+    <div class="bg-white rounded-2xl shadow p-4">
+      <p class="text-sm text-gray-700">
+        👤 {{ user?.username }} <span class="text-gray-500">({{ user?.role }})</span>
+      </p>
+    </div>
+
+    <!-- CASILLEROS (LISTA HORIZONTAL MOBILE) -->
+    <section class="bg-white rounded-2xl shadow p-4">
+      <h2 class="text-sm font-semibold text-gray-800 mb-2">
+        Casilleros
+      </h2>
+
+      <div class="flex gap-2 overflow-x-auto pb-2">
+        <button
+          *ngFor="let c of casilleros$"
+          class="whitespace-nowrap px-4 py-2 rounded-xl text-sm border bg-gray-50 hover:bg-blue-50"
+        >
+          {{ c.nombreCasillero }}
+        </button>
+      </div>
+
+      <p class="text-xs text-gray-500 mt-2">
+        Selecciona un casillero desde el sidebar para activar la búsqueda.
+      </p>
+    </section>
+
+    <!-- BUSCADOR DE LEGAJOS -->
+    <section class="bg-white rounded-2xl shadow p-4">
+      <h2 class="text-sm font-semibold text-gray-800 mb-3">
+        Buscar Legajo
+      </h2>
+
+      <app-legajo-search (search)="filterLegajos($event)"></app-legajo-search>
+
+      <p *ngIf="!selectedCasilleroId" class="text-xs text-red-500 mt-2">
+        Debes seleccionar un casillero primero.
+      </p>
+    </section>
+
+    <!-- RESULTADO LEGAJO -->
+    <section *ngIf="selectedLegajo" class="space-y-4">
+
+      <div class="bg-white rounded-2xl shadow p-4">
+        <h2 class="text-sm font-semibold text-gray-800 mb-2">
+          Resultado
+        </h2>
+
+        <app-legajo-card
+          [legajo]="selectedLegajo"
+          (buscarDocumentos)="onLegajoBuscarDocumentos($event)"
+        ></app-legajo-card>
+      </div>
+
+      <!-- BUSCADOR DOCUMENTO -->
+      <div *ngIf="showDocumentoSearch" class="bg-white rounded-2xl shadow p-4">
+        <h2 class="text-sm font-semibold text-gray-800 mb-2">
+          Buscar Documento
+        </h2>
+
+        <app-documento-search></app-documento-search>
+      </div>
+
+      <!-- DOCUMENTOS PRINCIPALES -->
+      <div class="bg-white rounded-2xl shadow p-4">
+        <h2 class="text-sm font-semibold text-gray-800 mb-2">
+          Documentos principales
+        </h2>
+
+        <!-- <app-documentos-list
+          (selectDocumento)="onSelectDocumento($event)"
+        ></app-documentos-list> -->
+      </div>
+
+      <!-- ANEXOS -->
+      <div class="bg-white rounded-2xl shadow p-4">
+        <h2 class="text-sm font-semibold text-gray-800 mb-2">
+          Anexos
+        </h2>
+
+        <app-anexos-list></app-anexos-list>
+      </div>
+
+    </section>
+
+    <!-- SI BUSCÓ Y NO ENCONTRÓ -->
+    <div *ngIf="hasSearched && !selectedLegajo" class="bg-white rounded-2xl shadow p-4">
+      <p class="text-sm text-gray-600 text-center">
+        No se encontró ningún legajo.
+      </p>
+    </div>
+
+  </main>
+</div>

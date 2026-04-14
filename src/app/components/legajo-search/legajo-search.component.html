@@ -1,0 +1,11 @@
+<div class="mb-4">
+  <h3 class="font-semibold text-gray-700 py-2">
+    Buscar legajo en: {{ casilleroNombre || 'Ninguno seleccionado' }}
+  </h3>
+  <input
+    type="text"
+    placeholder="Ingrese número de legajo valido..."
+    (input)="onSearch($event)"
+    class="w-full border border-gray-300 rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-blue-400 transition"
+  />
+</div>

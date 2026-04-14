@@ -1,0 +1,23 @@
+<div class="p-4 h-full flex flex-col bg-gray-50">
+
+  <div class="mt-4 flex-1 overflow-auto">
+    <h3 class="py-2 font-semibold text-gray-700">Menu</h3>
+
+    <button class="px-2 bg-orange-400 italic text-white rounded hover:bg-orange-700 text-sm">
+      + crear casillero
+    </button>
+
+    <ul>
+      <li *ngFor="let c of (casilleros$ | async)">
+        <a
+          [routerLink]="['/legajos']"
+          [queryParams]="{ casillero: c.id }"
+          class="block px-4 py-1 rounded hover:bg-slate-100"
+        >
+          {{ c.nombreCasillero }}
+        </a>
+      </li>
+    </ul>
+  </div>
+
+</div>
