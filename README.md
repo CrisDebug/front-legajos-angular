@@ -1,59 +1,113 @@
-# LegajosDashboard
+# 🌐 FrontEnd - Legajos Dashboard (Angular + TailwindCSS)
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.18.
+Este proyecto corresponde al **FrontEnd** de la aplicación FullStack de gestión documental, desarrollada con **Angular** y orientada a una experiencia **mobile-first**.
 
-## Development server
+El sistema permite la navegación entre pantallas de autenticación (simulada) y pantallas internas del sistema, conectando con el flujo principal de gestión de **Casilleros** y **Legajos**.
 
-To start a local development server, run:
+---
 
-```bash
-ng serve
-```
+# 🚀 Tecnologías Utilizadas
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+- Angular (Standalone Components)
+- TypeScript
+- TailwindCSS (Diseño responsive mobile-first)
+- HTML + CSS
+- Router Angular (SPA Navigation)
 
-## Code scaffolding
+---
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+# 🎯 Objetivo del Proyecto
 
-```bash
-ng generate component component-name
-```
+El objetivo del FrontEnd es entregar una aplicación web moderna que permita:
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+- Autenticación simulada (Login/Register/Recovery/Profile)
+- Navegación interna del sistema
+- Gestión visual de Casilleros y Legajos
+- Interfaz optimizada para dispositivos móviles (mobile-first)
 
-```bash
-ng generate --help
-```
+---
 
-## Building
+# 📌 Funcionalidades Implementadas
 
-To build the project run:
+## 🔐 Módulo de Autenticación (Simulado)
+Pantallas obligatorias implementadas:
 
-```bash
-ng build
-```
+- Login
+- Registro
+- Recuperar contraseña
+- Perfil de usuario
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+Características:
+- Validaciones básicas en formularios
+- Navegación completa entre pantallas
+- Diseño centrado tipo app (mobile-first)
+- Simulación de usuario autenticado mediante `router state`
 
-## Running unit tests
+Credenciales de prueba:
 
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
+- Usuario: `admin`
+- Password: `1234`
 
-```bash
-ng test
-```
+---
 
-## Running end-to-end tests
+## 🧱 Sistema Interno (Pantallas Principales)
+Pantalla principal del sistema:
 
-For end-to-end (e2e) testing, run:
+- Gestión de Legajos (Dashboard / LegajoPage)
 
-```bash
-ng e2e
-```
+Características:
+- Visualización de casilleros
+- Búsqueda de legajos por número
+- Selección de legajo y documentos
+- UI basada en tarjetas (cards), evitando grids
+- Diseño pensado para uso en móvil
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+---
 
-## Additional Resources
+# 📱 Diseño Responsive (Mobile-First)
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+El sistema fue construido con TailwindCSS aplicando enfoque mobile-first:
+
+✔ Mobile  
+✔ Tablet  
+✔ Desktop  
+
+Se prioriza una experiencia tipo aplicación móvil, con componentes simples y limpios.
+
+---
+
+# 📁 Estructura del Proyecto
+
+```text
+src/
+  app/
+    components/
+      sidebar/
+      legajo-search/
+      legajo-card/
+      documentos-list/
+      anexos-list/
+      documento-search/
+    core/
+      facade.service.ts
+      casillero.service.ts
+      legajo.service.ts
+    layouts/
+      main-layout/
+      auth-layout/
+    models/
+      casillero.model.ts
+      legajo.model.ts
+      documento.model.ts
+      anexo.model.ts
+    pages/
+      auth/
+        login/
+        register/
+        recovery-password/
+        profile/
+      dashboard/
+      about/
+      legajo-detail/
+    app.routes.ts
+    app.component.ts
